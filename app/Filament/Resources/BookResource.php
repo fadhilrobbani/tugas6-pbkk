@@ -33,10 +33,12 @@ class BookResource extends Resource
             ->schema([
                 Select::make('author_id')
                 ->relationship('author','name'),
+                Select::make('category_id')
+                ->relationship('category','name'),
                 TextInput::make('title')->required(),
                 FileUpload::make('cover')->required(),
                 RichEditor::make('description')->required(),
-                Toggle::make('is_publised'),
+                Toggle::make('is_published'),
 
             ]);
     }
@@ -46,6 +48,7 @@ class BookResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('author.name'),
+                TextColumn::make('category.name'),
                 TextColumn::make('title'),
                 ImageColumn::make('cover'),
                 TextColumn::make('description')->html(),

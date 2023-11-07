@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AuthorResource\Pages;
-use App\Filament\Resources\AuthorResource\RelationManagers;
-use App\Models\Author;
+use App\Filament\Resources\CategoryResource\Pages;
+use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,9 +15,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AuthorResource extends Resource
+class CategoryResource extends Resource
 {
-    protected static ?string $model = Author::class;
+    protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -25,8 +25,7 @@ class AuthorResource extends Resource
     {
         return $form
             ->schema([
-
-                TextInput::make('name')->required()
+                TextInput::make('name')->required(),
             ]);
     }
 
@@ -63,9 +62,9 @@ class AuthorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAuthors::route('/'),
-            'create' => Pages\CreateAuthor::route('/create'),
-            // 'edit' => Pages\EditAuthor::route('/{record}/edit'),
+            'index' => Pages\ListCategories::route('/'),
+            'create' => Pages\CreateCategory::route('/create'),
+            // 'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }
